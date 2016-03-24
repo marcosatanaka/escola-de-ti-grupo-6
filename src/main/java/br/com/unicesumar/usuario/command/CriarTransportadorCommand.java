@@ -7,11 +7,15 @@ public class CriarTransportadorCommand {
 
     private String nome;
     private String cnpj;
+    private Long idEndereco;
 
     @JsonCreator
-    public CriarTransportadorCommand(@JsonProperty("nome") String nome, @JsonProperty("cnpj") String cnpj) {
+    public CriarTransportadorCommand(@JsonProperty("nome") String nome
+                                   , @JsonProperty("cnpj") String cnpj
+                                   , @JsonProperty("idEndereco") Long idEndereco) {
         this.nome = nome;
         this.cnpj = cnpj;
+        this.idEndereco = idEndereco;
     }
 
     public String getNome() {
@@ -20,5 +24,9 @@ public class CriarTransportadorCommand {
 
     public String getCnpj() {
         return cnpj;
+    }
+
+    public Long getIdEndereco() {
+        return idEndereco;
     }
 }

@@ -18,7 +18,7 @@ public class UsuarioController {
     private UsuarioService service;
 
     @RequestMapping(value = "/novoAnunciante", method = RequestMethod.POST)
-    public ResponseEntity<Long> criarAnunciante(@RequestBody CriarAnuncianteCommand command) {
+        public ResponseEntity<Long> criarAnunciante(@RequestBody CriarAnuncianteCommand command) {
         return new ResponseEntity<>(service.criar(command), HttpStatus.OK);
     }
 

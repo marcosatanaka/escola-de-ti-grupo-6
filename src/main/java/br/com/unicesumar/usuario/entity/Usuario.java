@@ -1,5 +1,7 @@
 package br.com.unicesumar.usuario.entity;
 
+import br.com.unicesumar.endereco.entity.Endereco;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,11 +15,15 @@ public abstract class Usuario {
 
     private String nome;
 
+    @ManyToOne
+    private Endereco endereco;
+
     protected Usuario() {
     }
 
-    protected Usuario(String nome) {
+    protected Usuario(String nome, Endereco endereco) {
         this.nome = nome;
+        this.endereco = endereco;
     }
 
     public Long getId() {
@@ -28,4 +34,7 @@ public abstract class Usuario {
         return nome;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
 }

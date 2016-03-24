@@ -14,7 +14,7 @@ public class Transportador extends Usuario {
     }
 
     public Transportador(CriarTransportadorEvent event) {
-        super(event.getNome());
+        super(event.getNome(), event.getEndereco());
         this.cnpj = event.getCnpj();
     }
 

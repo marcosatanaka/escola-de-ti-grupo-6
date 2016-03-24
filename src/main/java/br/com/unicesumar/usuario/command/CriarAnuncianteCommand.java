@@ -7,11 +7,15 @@ public class CriarAnuncianteCommand {
 
     private String nome;
     private String cpf;
+    private Long idEndereco;
 
     @JsonCreator
-    public CriarAnuncianteCommand(@JsonProperty("nome") String nome, @JsonProperty("cpf") String cpf) {
+    public CriarAnuncianteCommand(@JsonProperty("nome") String nome
+                                , @JsonProperty("cpf") String cpf
+                                , @JsonProperty("idEndereco") Long idEndereco) {
         this.nome = nome;
         this.cpf = cpf;
+        this.idEndereco = idEndereco;
     }
 
     public String getNome() {
@@ -22,4 +26,7 @@ public class CriarAnuncianteCommand {
         return cpf;
     }
 
+    public Long getIdEndereco() {
+        return idEndereco;
+    }
 }

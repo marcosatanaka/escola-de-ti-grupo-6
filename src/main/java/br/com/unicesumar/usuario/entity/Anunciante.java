@@ -14,7 +14,7 @@ public class Anunciante extends Usuario {
     }
 
     public Anunciante(CriarAnuncianteEvent event) {
-        super(event.getNome());
+        super(event.getNome(), event.getEndereco());
         this.cpf = event.getCpf();
     }
 

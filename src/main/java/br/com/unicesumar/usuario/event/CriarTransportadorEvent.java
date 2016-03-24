@@ -1,15 +1,17 @@
 package br.com.unicesumar.usuario.event;
 
-import br.com.unicesumar.usuario.command.CriarTransportadorCommand;
+import br.com.unicesumar.endereco.entity.Endereco;
 
 public class CriarTransportadorEvent {
 
     private String nome;
     private String cnpj;
+    private Endereco endereco;
 
-    public CriarTransportadorEvent(CriarTransportadorCommand command) {
-        this.nome = command.getNome();
-        this.cnpj = command.getCnpj();
+    public CriarTransportadorEvent(String nome, String cnpj, Endereco endereco) {
+        this.nome = nome;
+        this.cnpj = cnpj;
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -20,4 +22,7 @@ public class CriarTransportadorEvent {
         return cnpj;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
 }
