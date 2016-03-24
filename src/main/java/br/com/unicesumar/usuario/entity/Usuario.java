@@ -1,14 +1,11 @@
 package br.com.unicesumar.usuario.entity;
 
-import br.com.unicesumar.usuario.event.CriarUsuarioEvent;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Usuario {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO", discriminatorType = DiscriminatorType.STRING)
+public abstract class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,11 +13,11 @@ public class Usuario {
 
     private String nome;
 
-    public Usuario() {
+    protected Usuario() {
     }
 
-    public Usuario(CriarUsuarioEvent event) {
-        this.nome = event.getNome();
+    protected Usuario(String nome) {
+        this.nome = nome;
     }
 
     public Long getId() {
