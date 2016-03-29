@@ -1,5 +1,6 @@
 package br.com.unicesumar.usuario.entity;
 
+import br.com.unicesumar.usuario.event.AlterarEnderecoEvent;
 import br.com.unicesumar.usuario.event.CriarAnuncianteEvent;
 
 import javax.persistence.*;
@@ -16,6 +17,10 @@ public class Anunciante extends Usuario {
     public Anunciante(CriarAnuncianteEvent event) {
         super(event.getNome(), event.getEndereco());
         this.cpf = event.getCpf();
+    }
+
+    public Anunciante(AlterarEnderecoEvent alterarEnderecoEvent) {
+
     }
 
     public String getCpf() {

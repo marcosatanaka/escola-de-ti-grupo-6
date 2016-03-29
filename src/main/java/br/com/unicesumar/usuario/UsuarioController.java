@@ -1,5 +1,6 @@
 package br.com.unicesumar.usuario;
 
+import br.com.unicesumar.usuario.command.AlterarEnderecoCommand;
 import br.com.unicesumar.usuario.command.CriarAnuncianteCommand;
 import br.com.unicesumar.usuario.command.CriarTransportadorCommand;
 import br.com.unicesumar.usuario.entity.Usuario;
@@ -40,6 +41,12 @@ public class UsuarioController {
     @RequestMapping(value = "/getTransportadores", method = RequestMethod.GET)
     public List<Usuario> findAllTransportadores() {
         return service.findAllTransportadores();
+    }
+
+    @RequestMapping(value = "/alterarEndereco", method = RequestMethod.PUT)
+    public ResponseEntity<String> alterarEndereco(@RequestBody AlterarEnderecoCommand command) {
+        service.alterarEndereco(command);
+        return new ResponseEntity<>("Endereço alterado com sucesso.", HttpStatus.OK);
     }
 
 }
