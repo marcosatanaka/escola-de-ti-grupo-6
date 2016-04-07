@@ -1,8 +1,7 @@
 package br.com.unicesumar.usuario;
 
 import br.com.unicesumar.usuario.command.AlterarEnderecoCommand;
-import br.com.unicesumar.usuario.command.CriarAnuncianteCommand;
-import br.com.unicesumar.usuario.command.CriarTransportadorCommand;
+import br.com.unicesumar.usuario.command.CriarUsuarioCommand;
 import br.com.unicesumar.usuario.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,29 +17,14 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
-    @RequestMapping(value = "/novoAnunciante", method = RequestMethod.POST)
-        public ResponseEntity<Long> criarAnunciante(@RequestBody CriarAnuncianteCommand command) {
-        return new ResponseEntity<>(service.criar(command), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/novoTransportador", method = RequestMethod.POST)
-    public ResponseEntity<Long> criarTransportador(@RequestBody CriarTransportadorCommand command) {
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+        public ResponseEntity<Long> criarUsuario(@RequestBody CriarUsuarioCommand command) {
         return new ResponseEntity<>(service.criar(command), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public List<Usuario> findAll() {
         return service.findAll();
-    }
-
-    @RequestMapping(value = "/getAnunciantes", method = RequestMethod.GET)
-    public List<Usuario> findAllAnunciantes() {
-        return service.findAllAnunciantes();
-    }
-
-    @RequestMapping(value = "/getTransportadores", method = RequestMethod.GET)
-    public List<Usuario> findAllTransportadores() {
-        return service.findAllTransportadores();
     }
 
     @RequestMapping(value = "/alterarEndereco", method = RequestMethod.PUT)

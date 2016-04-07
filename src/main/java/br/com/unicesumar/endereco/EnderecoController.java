@@ -16,7 +16,7 @@ public class EnderecoController {
     @Autowired
     private EnderecoService service;
 
-    @RequestMapping(value = "/novoEndereco", method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public ResponseEntity<Long> criarEndereco(@RequestBody  CriarEnderecoCommand command) {
         return new ResponseEntity<>(service.criar(command), HttpStatus.OK);
     }

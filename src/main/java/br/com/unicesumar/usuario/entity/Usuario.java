@@ -1,13 +1,12 @@
 package br.com.unicesumar.usuario.entity;
 
 import br.com.unicesumar.endereco.entity.Endereco;
+import br.com.unicesumar.usuario.event.CriarUsuarioEvent;
 
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TIPO", discriminatorType = DiscriminatorType.STRING)
-public abstract class Usuario {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,15 +14,18 @@ public abstract class Usuario {
 
     private String nome;
 
+    private String cpfCnpj;
+
     @ManyToOne
     private Endereco endereco;
 
     protected Usuario() {
     }
 
-    protected Usuario(String nome, Endereco endereco) {
-        this.nome = nome;
-        this.endereco = endereco;
+    public Usuario(CriarUsuarioEvent event) {
+        this.nome = event.getNome();
+        this.cpfCnpj = event.getCpf();
+        this.endereco = event.getEndereco();
     }
 
     public Long getId() {
@@ -34,7 +36,15 @@ public abstract class Usuario {
         return nome;
     }
 
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
     public Endereco getEndereco() {
         return endereco;
+    }
+
+    public void mudar(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

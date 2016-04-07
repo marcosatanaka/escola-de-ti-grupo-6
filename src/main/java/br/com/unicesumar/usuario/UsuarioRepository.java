@@ -8,7 +8,4 @@ import java.util.List;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    @Query("select u from Usuario u where tipo = ?1")
-    List<Usuario> findByTipo(String tipo);
-
 }
